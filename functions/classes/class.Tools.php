@@ -908,6 +908,22 @@ class Tools extends Common_functions {
 	}
 
 	/**
+	 *  Fetch sanitised HTML instructions
+	 *  @param int $name
+	 *  @return string
+	 */
+	public function fetch_instructions($id) {
+		$instructions = $this->fetch_object("instructions", "id", $id);
+		$html = is_object($instructions) && is_string($instructions->instructions) ? html_entity_decode($instructions->instructions, ENT_QUOTES) : '';
+
+		/* format line breaks */
+		$html = stripslashes($html);
+
+		/* prevent <script> */ #
+		return $this->noxss_html($html);
+	}
+
+	/**
 	 * Fetches all subnets that are set to allow requests
 	 *
 	 * @access public

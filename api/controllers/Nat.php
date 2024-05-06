@@ -174,7 +174,7 @@ class Nat_controller extends Common_api_functions {
                 }
                 else {
                     # Better source and destination presentation (json decode values from DB)
-                    $jd = (array) json_decode($v, true);
+                    $jd = (array) pf_json_decode($v, true);
                     if ($jd and $jd["ipaddresses"]) {
                         $rr[$k] = array('ipaddresses' => $jd["ipaddresses"]);
                     }
@@ -308,7 +308,7 @@ class Nat_controller extends Common_api_functions {
      **/
     private function verify_src_dst($k) {
         if ($this->_params->$k) {
-            #$input_param = (array) json_decode($this->_params->$k);
+            #$input_param = (array) pf_json_decode($this->_params->$k);
             $input_param = $this->_params->$k; 
             if (!is_array($input_param)) {
                 $this->Response->throw_exception(400, "Invalid $k format (Must be an array");
@@ -367,5 +367,3 @@ class Nat_controller extends Common_api_functions {
         }
     }
 }
-
-?>
