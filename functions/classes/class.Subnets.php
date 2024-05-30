@@ -238,7 +238,7 @@ class Subnets extends Common_functions {
 		# Check network/broadcast are not inuse before disabling isPool.
 		if (isset($values['isPool']) && $old_subnet->isPool==1 && $values['isPool']==0) {
 			if ($this->network_or_broadcast_address_in_use($old_subnet)) {
-				$errmsg = _("Can not disable isPool, network or broadcast address is allocated");
+				$errmsg = _("Cannot disable isPool, network or broadcast address is allocated");
 				$this->Result->show("danger", $errmsg, false);
 				$this->Log->write( _("Subnet edit"), _("Failed to edit subnet").".<hr>".$errmsg, 2);
 				return false;
