@@ -244,6 +244,7 @@ class Subnets extends Common_functions {
 				return false;
 			}
 		}
+		// this is just a testing
 
 		# execute
 		try { $this->Database->updateObject("subnets", $values, "id"); }
